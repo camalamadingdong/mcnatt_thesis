@@ -1,0 +1,111 @@
+
+WAMITLOG.TXT file from WAMIT run:  29-Aug-2015 23:46:06
+
+ Input file config.wam          
+! generic configuration file:  config.wam
+RAMGBMAX= 2.0
+NCPU=1
+USERID_PATH = N:\wamitv7
+LICENSE_PATH=\wamitv7\license
+
+ Input file exp_flap.cfg        
+IALTPOT = 2
+IRR = 1
+ILOG = 1
+IALTFRC = 2
+IFIELD_ARRAYS = 1
+IFORCE = 1
+ILOWHI = 0
+INUMOPT6 = 1
+NEWMDS = 0
+IGENMDS = 0
+IPOTEN = 1
+ISCATT = 0
+ISOLVE = 0
+ISOR = 0
+MAXITT = 35
+MAXMIT = 8
+MONITR = 0
+NOOUT = 0  0  0  0  0  0  0  0  0
+NUMHDR = 1
+NUMNAM = 0
+SCRATCH_PATH = N:\wamitv7\scratch
+
+POTEN run started:  29-Aug-2015 23:46:06
+
+ Input file exp_flap.pot        
+.pot file   Series:     Run: exp_flap
+  1.1600
+0           1
+3		Number of periods to be analyzed
+  1.2500
+  1.0000
+  0.8000
+2		Number of direction headdings to be analyzed
+  0.0000
+315.0000
+1
+exp_flap1.gdf
+  0.0000	  0.0000	 -0.4000	  0.0000
+0 0 0 0 1 0
+
+ First    10 lines of input file exp_flap1.gdf       
+Model exp_flap1, created: 29-Aug-2015
+  1.0000   9.8066
+0 0
+2530
+	  0.0400	 -0.2842	  0.4000
+	  0.0400	 -0.3000	  0.4000
+	  0.0400	 -0.3000	  0.3840
+	  0.0400	 -0.2842	  0.3840
+	  0.0400	 -0.2684	  0.4000
+	  0.0400	 -0.2842	  0.4000
+
+
+ Number of processors used :   1
+
+ Estimated RAM used :  5.2E-02 Gigabytes
+
+  POTEN module run completed
+
+POTEN run completed:  29-Aug-2015 23:46:14
+
+FORCE run started:  29-Aug-2015 23:46:14
+
+ Input file exp_flap.frc        
+.frc file   Series:     Run: exp_flap
+1  1  0  0  0  1  0 0  0
+1000.0000
+  0.0000	  0.0000	  0.2000	
+1
+ 19.2000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	 19.2000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	 19.2000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  1.6000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  1.0342	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.5862	
+1
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+1
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	  0.0000	
+0
+0
+1
+0
+101	 -2.0000	  0.0400
+101	 -2.0000	  0.0400
+1	  0.0000	  1.0000
+
+FORCE run completed:  29-Aug-2015 23:47:44
+
+  WAMIT run completed

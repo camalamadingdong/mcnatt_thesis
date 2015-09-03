@@ -1,0 +1,18 @@
+# Ignore .mat files
+*.mat
+
+
+*.asv
+*~
+
+# Wamit output wave field files - can sometimes be large
+*.6p
+*.6vx
+*.6vy
+*.6vz
+
+# Nemoh output files
+
+# Ignore the contents of the runs and pics folder
+runs/**
+pics/**
