@@ -7,10 +7,10 @@ PhD thesis, The Univeristy of Edinburgh, 2015.
 ```
 
 ##Getting started
-To use thesis, you also need
-* mwave
-* cyl_wfe
-* experimental data that is found attached to cyl_wfe
+To use this code, you also need:
+* **mwave** https://github.com/camalamadingdong/mwave
+* **cyl_wfe** https://github.com/camalamadingdong/cyl_wfe
+* **experimental data** see cyl_wfe
 
 ## Contact me
 If you are interesting in using anything here and have any problems, please contact me: cameron.mcnatt@gmail.com
