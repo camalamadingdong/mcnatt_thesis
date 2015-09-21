@@ -1240,7 +1240,7 @@ dxcl = -0.02;
 dycl = -0.08;
 x1 = caxis.Position(1);
 y1 = caxis.Position(2);
-annotation(gcf, 'textbox', [x1+dxcl y1+dycl 0.2 0.07], 'string', '|H_{s}/H^{I}_{s}|', 'linestyle', 'none', 'fontsize', fontsi);
+annotation(gcf, 'textbox', [x1+dxcl y1+dycl 0.2 0.07], 'string', 'H_{s}/H^{I}_{s}', 'linestyle', 'none', 'fontsize', fontsi);
 
 xst = 0.45;
 yst1 = 0.55;
@@ -1334,7 +1334,7 @@ powB = powb(2,1,7) + powb(2,1,8);
 pos = acomp.BodXY;
 qA = powA./powB;
 
-%% wave field
+% wave field
 x = -40:1.4:100;
 y = -350:1.4:350;
 
@@ -1344,32 +1344,27 @@ tic
 aWF = acomp.WaveField(true, X, Y, 'NoVel');
 wftime = toc
 
-etaA = waveA.Elevation('Total');
+etaA = aWF.Elevation('Total');
 
 save([folder '\multi\atten_array_large'], 'acomp', 'qA', 'pos', 'X', 'Y', 'aWF', 'etaA', '-v7.3');
 
 %% 7.3) Large Array - plot
 
-fontsi = 9;
-font = 'Times New Roman';
-fontwe = 'light';
-
-figwid = 13;
-fighei = 10;
+fighei = 22;
 
 figure
 set(gcf, 'PaperPosition', [0 0 figwid fighei]);
 
 
-pwid1 = 0.4;
-pwid2 = 0.4;
+pwid1 = 0.9;
+pwid2 = 0.9;
 
-phei1 = 0.8;
-phei2 = 0.8;
+phei1 = 0.2;
+phei2 = 0.55;
 
 lmar = 0.11;
 lrspc = 0.1;
-tbspc1 = 0.02;
+tbspc = 0.1;
 tmar = 0.04;
 
 % chei = phei - 0.04;
@@ -1378,8 +1373,13 @@ tmar = 0.04;
 % cbotspc = 0.02;
 
 indsp1 = find(qA >= 1);
-col = zeros(size(qA));
-col(indsp1) = ones(size(indsp1));
+c2 = [0.8500, 0.3250, 0.0980];
+c3 = [0, 0.4470, 0.7410];
+col = ones(length(qA),1)*c2;
+col(indsp1,:) = ones(length(indsp1),1)*c3;
+
+% col = zeros(size(qA));
+% col(indsp1) = ones(size(indsp1));
 
 siz = 50;
 
@@ -1395,83 +1395,43 @@ pla = surf(X10s, Y10s, bod1);
 alpha(pla, 0.1);
 
 view(gca,[-1.5 1]);
-set(gca, 'xlim', [-40 40], 'ylim', [-350 350], 'zlim', [0 1.5], 'xtick', [-20 0 20 40], 'ytick', [-200 0 200], 'fontname',font, 'fontsize', fontsi, 'fontweight', fontwe);
+%view(gca,[-7 5]);
+set(gca, 'xlim', [-40 40], 'ylim', [-350 350], 'zlim', [0 1.5], 'xtick', [-20 0 20 40], 'ytick', [-200 0 200], 'fontsize', fontsi);
 set(gca, 'dataaspectratio', [1 1 1/30])
 set(gca, 'plotboxaspectratio', [1 1 1])
 
 %title('\lambda/a = 10, \beta = 0','fontname',font, 'fontsize', fontsi, 'fontweight', fontwe);
-xlabel('x/a','fontname',font, 'fontsize', fontsi, 'fontweight', fontwe);
-ylabel('y/a','fontname',font, 'fontsize', fontsi, 'fontweight', fontwe);
-zlabel('q','fontname',font, 'fontsize', fontsi, 'fontweight', fontwe);
+xlabel('x/d', 'fontsize', fontsi);
+ylabel('y/d   ', 'fontsize', fontsi);
+zlabel('q', 'fontsize', fontsi);
 set(get(gca, 'zlabel' ), 'Rotation' ,0 );
 
-
-waveA.BodyMotions = aComp.Motions;
-etaA = waveA.Elevation('Total');
-[X, Y] = waveA.FieldPoints;
-
-subplot('Position', [lmar+pwid1+lrspc 1-tmar-phei2 pwid2 phei2]);
+subplot('Position', [lmar 1-tmar-phei1-tbspc-phei2 pwid2 phei2]);
 
 pcolor(X, Y, abs(etaA{1}));
 fet;
 shading interp;
-jfm_colormap;
-set(gca, 'clim', [0.5 1.5])
-jfm_drawBodiesOnPlot(aComp.Bodies)
+thesis_cmap;
+set(gca, 'clim', [0.7 1.3])
+multi_drawBodiesOnPlot(acomp.Bodies)
 
-set(gca,'fontname',font, 'fontsize', fontsi, 'fontweight', fontwe);
-xlabel('x/a','fontname',font, 'fontsize', fontsi, 'fontweight', fontwe);
-ylabel('y/a','fontname',font, 'fontsize', fontsi, 'fontweight', fontwe);
+set(gca, 'fontsize', fontsi);
+xlabel('x/d', 'fontsize', fontsi);
+ylabel('y/d', 'fontsize', fontsi);
 
 caxis = colorbar;
-set(caxis,'fontname',font, 'fontsize', fontsi, 'fontweight', fontwe);
-xlabel(caxis, '|\eta/A|','fontname',font, 'fontsize', fontsi, 'fontweight', fontwe);
+set(caxis, 'fontsize', fontsi);
+dxcl = 0.02;
+dycl = -0.08;
+x1 = caxis.Position(1);
+y1 = caxis.Position(2);
+annotation(gcf, 'textbox', [x1+dxcl y1+dycl 0.2 0.07], 'string', '|\eta/a|', 'linestyle', 'none', 'fontsize', fontsi);
+%xlabel(caxis, '|\eta/a|', 'fontsize', fontsi);
 
-xst = 0.18;
+xst = 0.4;
 yst = 0.01;
-annotation(gcf,'textbox',[xst yst 0.3 0.06],'String',{'(a) Interaction factor'},'fontname',font, 'fontsize', fontsi, 'fontweight', fontwe,'LineStyle','none');
+annotation(gcf,'textbox',[xst 0.65 0.3 0.06],'String',{'a) Interaction factor'}, 'fontsize', fontsi,'LineStyle','none');
 
-annotation(gcf,'textbox',[xst+0.5 yst 0.3 0.06],'String',{'(b) Wave field'},'fontname',font, 'fontsize', fontsi, 'fontweight', fontwe,'LineStyle','none');
+annotation(gcf,'textbox',[xst 0 0.3 0.06],'String',{'b) Wave field'}, 'fontsize', fontsi,'LineStyle','none');
 
-
-%print('-dpng', '-r600', [mainPath '\atten_lar_10']);
-print('-depsc', '-r600', [mainPath '\figure11']);
-
-cmap = colormap('Gray');
-cmap = flipud(cmap);
-colormap(cmap);
-
-jfm_drawBodiesOnPlot(aComp.Bodies, 'Cir', 'Color', 'k', 'Axis', gca);
-scatter3(axq, pos(:,1), pos(:,2), qA, siz, ones(size(qA)), 'Marker','.');
-
-print('-deps', '-r600', [mainPath '\bw_figure11']);
-
-%%
-
-figure
-fontsi = 7;
-
-figwid = 12;
-fighei = 12;
-%set(gcf, 'PaperPosition', [0 0 figwid fighei]);
-
-zlims = [0.06, 3, 0.05; 0.3, 1, 0.02];
-
-scatter3(pos(:,1), pos(:,2), qA);
-hold on;
-scatter3(pos(:,1), pos(:,2), qA, 'Marker','.');
-%view(gca,[-31.5 42]);
-%view(gca,[-25.5 14]);
-view(gca,[-2.5 2]);
-%set(gca, 'xlim', [-40 40], 'ylim', [-350 350], 'zlim', [0 zlims(m,n)], 'fontsize', fontsi);
-%set(gca, 'dataaspectratio', [1 1 zlims(m,n)/30])
-set(gca, 'plotboxaspectratio', [1 1 1])
-
-
-title('Beta = 0', 'fontsize', fontsi);
-
-xlabel('x/a', 'fontsize', fontsi);
-ylabel('y/a', 'fontsize', fontsi);
-zlabel({'\lambda/a = 30', 'CW'}, 'fontsize', fontsi);
-
-
+print('-dpng', '-r600', [folder 'pics\large_array']);

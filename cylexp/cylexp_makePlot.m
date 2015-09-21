@@ -55,7 +55,7 @@ fntsize = 10;
 %set(gcf,'PaperPosition',[0 0 18 12]);
 
 tmar = 0.05;
-lmar = 0.1;
+lmar = 0.12;
 
 fighei1 = 0.12;
 fighei2 = 0.14;
