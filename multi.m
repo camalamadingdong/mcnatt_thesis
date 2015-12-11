@@ -956,14 +956,14 @@ for m = 1:3
     set(gca, 'clim', clims(m,:), 'fontsize', fontsi);
     if (m == 1)
         title ('WAMIT', 'fontsize', fontsi);
-        ylabel('\lambda/a = 3', 'fontsize', fontsi);
+        ylabel('\lambda/d = 3', 'fontsize', fontsi);
         set(gca, 'xticklabel', '', 'yticklabel', '');
     elseif (m == 2)
-        ylabel('\lambda/a = 10', 'fontsize', fontsi);
+        ylabel('\lambda/d = 10', 'fontsize', fontsi);
         set(gca, 'xticklabel', '', 'yticklabel', '');
     else
-        xlabel('x/a', 'fontsize', fontsi);
-        ylabel({'\lambda/a = 10','y/a'}, 'fontsize', fontsi);
+        xlabel('x/d', 'fontsize', fontsi);
+        ylabel({'\lambda/d = 10','y/d'}, 'fontsize', fontsi);
         set(gca,'xtick', [-20 20 60], 'ytick', [-60 -20 20 60]);
     end
 
@@ -1002,7 +1002,7 @@ for m = 1:3
         dycl = -0.08;
         x1 = caxis.Position(1);
         y1 = caxis.Position(2);
-        annotation(gcf, 'textbox', [x1+dxcl y1+dycl 0.2 0.07], 'string', '|\eta/a|', 'linestyle', 'none', 'fontsize', fontsi);
+        annotation(gcf, 'textbox', [x1+dxcl y1+dycl 0.2 0.07], 'string', '|\eta/d|', 'linestyle', 'none', 'fontsize', fontsi);
     end
     
     subplot('Position', [lmar+2*pwid+lrspc2 bpos pwid phei]);

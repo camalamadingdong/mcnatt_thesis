@@ -415,6 +415,9 @@ xlabel('Beam (B/A)', 'FontSize', fontsi);
 ylabel('E', 'FontSize', fontsi);
 title('Power absorption (as E) v. Beam', 'FontSize', fontsi)
 
+leg = legend('Power Absorption', 'Linear Fit');
+set(leg, 'location', 'northwest', 'fontsize', fontsi)
+
 print('-dpng', '-r400', [folder 'pics\bristol_cyl_E']);
 
 %% 5.1) Wave field - compute
